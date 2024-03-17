@@ -20,6 +20,7 @@ export class SideBarComponent {
   password: any;
   email: any;
   userInfo!:any;
+  userId!:any;
   constructor(
     private fb: FormBuilder,
     config: NgbModalConfig,
@@ -70,9 +71,9 @@ export class SideBarComponent {
   fetchData(){
     // this.user = JSON.parse(localStorage.getItem('user') || '[]');
     // console.log(this.user, this.user.id);
-    const userId = this.cookieService.get('userId');
+    this.userId = this.cookieService.get('userId');
     console.log(userId);
-    this.user_.getUserById(userId).subscribe((res: any) => {
+    this.user_.getUserById(this.userId).subscribe((res: any) => {
       (this.userInfo = res), console.log(this.userInfo);
     });
   }
@@ -99,7 +100,7 @@ export class SideBarComponent {
     }
     data.set("name",this.name);
     data.set("email",this.email);
-        this.user_.updateUser(this.user.id,data).subscribe(
+        this.user_.updateUser(this.userId,data).subscribe(
           (res) => {
             {
               Swal.fire({
