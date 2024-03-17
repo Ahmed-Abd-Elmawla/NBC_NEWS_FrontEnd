@@ -1,0 +1,361 @@
+<div class="body">
+  <section class="container">
+    <div class="row mt-3">
+      <div class="col-3">
+        <app-side-bar></app-side-bar>
+      </div>
+      <div class="col-9">
+        <div class="row mb-3">
+          <div class="col-6">
+            <h3>Your Posts</h3>
+          </div>
+          <div class="col-6">
+            <a class="btn btn-outline-success float-end" (click)="open(content)">Create new post</a>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              <h5 *ngIf="allPosts?.length <= 0">You don't create any posts yet.</h5>
+              <div *ngFor="let post of allPosts">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-body overflow-hidden">
+                      <img src="http://localhost:8000/posts_images/{{post.cover}}" alt="" width="100%">
+                      <h5 class="card-title">{{post.title}}</h5>
+                      <h5 class="card-title">{{post.sub_title}}</h5>
+                      <hr>
+                      <small class="text-muted d-block">Posted on {{post.created_at| date: 'dd/MM/yyyy' }}</small>
+                      <small class="text-muted">Updated at {{post.updated_at| date: 'dd/MM/yyyy' }}</small>
+                      <div ngbAccordion class="mt-2 mb-3">
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Paragraph 1</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>{{post.description}}</ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Paragraph 2</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>{{post.articles[0].description}}</ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Paragraph 3</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>{{post.articles[1].description}}</ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Images</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>
+                                <div class="d-inline">
+                                  <img src="http://localhost:8000/posts_images/{{post.articles[0].image}}" alt=""
+                                    width="50%">
+                                  <img src="http://localhost:8000/posts_images/{{post.articles[1].image}}" alt=""
+                                    width="50%">
+                                </div>
+                              </ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Image 1 details</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>{{post.articles[0].details}}</ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Image 1 source</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>{{post.articles[0].image_source}}</ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Image 2 details</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>{{post.articles[1].details}}</ng-template>
+                            </div>
+                          </div>
+                        </div>
+                        <div ngbAccordionItem [collapsed]="true">
+                          <h2 ngbAccordionHeader>
+                            <button ngbAccordionButton>Image 2 source</button>
+                          </h2>
+                          <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                              <ng-template>{{post.articles[1].image_source}}</ng-template>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <a class="btn btn-outline-primary m-2"
+                          (click)="openUpdate(content,post.id,post.title,post.sub_title,post.description,post.articles[0].description,post.articles[1].description,post.location,post.category_id,post.articles[0].details,post.articles[1].details,post.articles[0].image_source,post.articles[1].image_source);article_1_id=post.articles[0].id;article_2_id=post.articles[1].id">update</a>
+                        <a class="btn btn-outline-danger m-2" (click)="delete(post.id)">delete</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header p-4">
+    <h4 class="modal-title" id="modal-basic-title" *ngIf="flag==true">create new post</h4>
+    <h4 class="modal-title" id="modal-basic-title" *ngIf="flag==false">update post</h4>
+    <button type="button" class="btn-close" aria-label="Close"
+      (click)="modal.dismiss('Cross click');flag=true;"></button>
+  </div>
+  <div class="modal-body">
+    <form enctype="multipart/form-data" class="ps-5 px-5" [formGroup]="form">
+      <!-- <div  class="alert alert-warning p-3 mt-1 font-weight-bold" *ngIf="flag==false">
+        <span><i class="fa-solid fa-circle-exclamation"></i> Be careful If you click update, post status will be pending until verify again</span>
+      </div> -->
+      <div class="mb-3">
+        <label for="title">Title</label>
+        <div class="input-group">
+          <input id="title" class="form-control" placeholder="enter title" name="title" [(ngModel)]="title"
+            formControlName="title" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['title'].touched && form.controls['title'].invalid">
+          <span *ngIf="form.controls['title'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Title is required</span>
+          <span *ngIf="form.controls['title'].errors?.['minlength']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Title min length is 30</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="sub_title">Sub title</label>
+        <div class="input-group">
+          <input id="sub_title" class="form-control" placeholder="enter title" name="sub_title" [(ngModel)]="sub_title"
+            formControlName="sub_title" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['sub_title'].touched && form.controls['sub_title'].invalid">
+          <span *ngIf="form.controls['sub_title'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Sub title is required</span>
+          <span *ngIf="form.controls['sub_title'].errors?.['minlength']"><i
+              class="fa-solid fa-triangle-exclamation"></i>
+            Sub title min length is 30</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title">Paragraph 1</label>
+        <div class="input-group">
+          <input id="paragraph_1" class="form-control" placeholder="enter paragraph 1" name="paragraph_1"
+            [(ngModel)]="paragraph_1" formControlName="paragraph_1" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['paragraph_1'].touched && form.controls['paragraph_1'].invalid">
+          <span *ngIf="form.controls['paragraph_1'].errors?.['required']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Paragraph 1 is required</span>
+          <span *ngIf="form.controls['paragraph_1'].errors?.['minlength']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Paragraph 1 min length is 50</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title">Paragraph 2</label>
+        <div class="input-group">
+          <input id="paragraph_2" class="form-control" placeholder="enter paragraph 2" name="paragraph_2"
+            [(ngModel)]="paragraph_2" formControlName="paragraph_2" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['paragraph_2'].touched && form.controls['paragraph_2'].invalid">
+          <span *ngIf="form.controls['paragraph_2'].errors?.['required']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Paragraph 2 is required</span>
+          <span *ngIf="form.controls['paragraph_2'].errors?.['minlength']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Paragraph 2 min length is 50</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title">Paragraph 3</label>
+        <div class="input-group">
+          <input id="paragraph_3" class="form-control" placeholder="enter paragraph 3" name="paragraph_3"
+            [(ngModel)]="paragraph_3" formControlName="paragraph_3" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['paragraph_3'].touched && form.controls['paragraph_3'].invalid">
+          <span *ngIf="form.controls['paragraph_3'].errors?.['required']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Paragraph 3 is required</span>
+          <span *ngIf="form.controls['paragraph_3'].errors?.['minlength']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Paragraph 3 min length is 50</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title">location</label>
+        <div class="input-group">
+          <input id="location" class="form-control" placeholder="enter location" name="location" [(ngModel)]="location"
+            formControlName="location" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['location'].touched && form.controls['location'].invalid">
+          <span *ngIf="form.controls['location'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Location is required</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="title">Category</label>
+        <div class="input-group">
+          <select class="form-select" aria-label="Default select example" name="category" [(ngModel)]="category_id"
+            formControlName="category">
+            <option *ngFor="let category of categories" value="{{ category.id }}"
+              [ngClass]="{ 'selected': category.id === category_id }">
+              {{ category.category_name }}
+            </option>
+          </select>
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['category'].touched && form.controls['category'].invalid">
+          <span *ngIf="form.controls['category'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            category is required</span>
+          <span class="d-block" *ngIf="form.controls['category'].errors?.['pattern']"><i
+              class="fa-solid fa-triangle-exclamation"></i>Please select one</span>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label *ngIf="flag==true" for="title">Cover</label>
+        <div *ngIf="flag==true" class="input-group">
+          <input type="file" id="cover" class="form-control" name="cover" formControlName="cover" />
+        </div>
+        <div *ngIf="flag==true">
+          <div class="alert alert-danger p-1 mt-1"
+            *ngIf="form.controls['cover'].touched && form.controls['cover'].invalid">
+            <span class="d-block" *ngIf="form.controls['cover'].errors?.['required']"><i
+                class="fa-solid fa-triangle-exclamation"></i>cover is required</span>
+          </div>
+        </div>
+
+
+        <label *ngIf="flag==true" for="title">Image 1</label>
+        <div *ngIf="flag==true" class="input-group">
+          <input type="file" id="image_1" class="form-control" name="image_1" formControlName="image_1" />
+        </div>
+        <div *ngIf="flag==true">
+          <div class="alert alert-danger p-1 mt-1"
+            *ngIf="form.controls['image_1'].touched && form.controls['image_1'].invalid">
+            <span class="d-block" *ngIf="form.controls['image_1'].errors?.['required']"><i
+                class="fa-solid fa-triangle-exclamation"></i>image 1 is required</span>
+          </div>
+        </div>
+
+        <label for="title">Image 1 Details</label>
+        <div class="input-group">
+          <input id="details_1" class="form-control" placeholder="enter image 1 details" name="details_1"
+            [(ngModel)]="details_1" formControlName="details_1" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['details_1'].touched && form.controls['details_1'].invalid">
+          <span *ngIf="form.controls['details_1'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Image 1 Details is required</span>
+          <span *ngIf="form.controls['details_1'].errors?.['minlength']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Image 1 Details min length is 50</span>
+        </div>
+
+        <label for="title">Image 1 Source</label>
+        <div class="input-group">
+          <input id="source_1" class="form-control" placeholder="enter image 1 source" name="source_1"
+            [(ngModel)]="source_1" formControlName="source_1" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['source_1'].touched && form.controls['source_1'].invalid">
+          <span *ngIf="form.controls['source_1'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Image 1 Source is required</span>
+          <span *ngIf="form.controls['source_1'].errors?.['minlength']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Image 1 source min length is 150</span>
+        </div>
+
+        <label *ngIf="flag==true" for="title">Image 2</label>
+        <div *ngIf="flag==true" class="input-group">
+          <input #myFileInput type="file" id="image_2" class="form-control" name="image_2" formControlName="image_2" />
+        </div>
+        <div *ngIf="flag==true">
+          <div class="alert alert-danger p-1 mt-1"
+            *ngIf="form.controls['image_2'].touched && form.controls['image_2'].invalid">
+            <span class="d-block" *ngIf="form.controls['image_2'].errors?.['required']"><i
+                class="fa-solid fa-triangle-exclamation"></i>image 2 is required</span>
+          </div>
+        </div>
+
+
+        <label for="title">Image 2 Details</label>
+        <div class="input-group">
+          <input id="details_2" class="form-control" placeholder="enter image 2 details" name="details_2"
+            [(ngModel)]="details_2" formControlName="details_2" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['details_2'].touched && form.controls['details_2'].invalid">
+          <span *ngIf="form.controls['details_2'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Image 2 Details is required</span>
+          <span *ngIf="form.controls['details_2'].errors?.['minlength']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Image 2 Details min length is 50</span>
+        </div>
+
+        <label for="title">Image 2 Source</label>
+        <div class="input-group">
+          <input id="source_2" class="form-control" placeholder="enter image 2 source" name="source_2"
+            [(ngModel)]="source_2" formControlName="source_2" />
+        </div>
+        <div class="alert alert-danger p-1 mt-1"
+          *ngIf="form.controls['source_2'].touched && form.controls['source_2'].invalid">
+          <span *ngIf="form.controls['source_2'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Image 2 Source required</span>
+          <span *ngIf="form.controls['source_2'].errors?.['minlength']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Image 2 source min length is 15</span>
+        </div>
+
+        <label for="tags">Tags</label>
+        <div class="input-group">
+          <input id="tags" class="form-control" placeholder="enter tags separated by ," name="tags"
+            [(ngModel)]="tags" formControlName="tags"/>
+        </div>
+        <!-- <div class="input-group">
+          <input *ngIf="flag==false" type="file" id="upCover" class="form-control" name="UpCover" />
+        </div> -->
+      </div>
+      <button type="button" class="btn btn-outline-success float-end p-2 ps-5 px-5 mb-3" [disabled]="form.invalid"
+        (click)="create()" *ngIf="flag==true">Create</button>
+      <button type="button" class="btn btn-outline-success float-end p-2 ps-5 px-5 mb-3" (click)="update()"
+        *ngIf="flag==false">update</button>
+    </form>
+  </div>
+</ng-template>

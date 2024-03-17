@@ -1,0 +1,89 @@
+/* ---------- Editor’s Picks Section ---------- */
+.editors-picks h4 {
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.editors-picks .card {
+  background-color: transparent !important;
+  height: 170px;
+}
+
+.editors-picks .card img {
+  width: 272px;
+  height: 170px;
+}
+
+.editors-picks .card-title {
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.editors-picks .card-text {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.carousel-indicators button {
+  width: 15px !important;
+  height: 4px !important;
+  opacity: 20% !important;
+  background-color: #C31815 !important;
+  margin: 0 10px !important;
+}
+
+.carousel-indicators .active {
+  width: 25px !important;
+  opacity: 100% !important;
+  background-color: #C31815 !important;
+}
+
+.middle {
+  width: 272px;
+  height: 170px;
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+.editors-picks-img:hover .middle {
+  opacity: 1;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.3302113081560749) 0%, rgba(0, 0, 0, 0.41704604204963236) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.middle-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  color: #ffffff;
+}
+
+.img-label {
+  width: 78px;
+  height: 22px;
+  position: relative;
+  background: #C31815;
+  font-size: 12px;
+  padding-top: 2px;
+}
+
+.img-label:before {
+  content: "";
+  position: absolute;
+  left: -15.001px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-right: 15px solid #C31815;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+}
+
+.middle-content i{
+  cursor: pointer;
+}

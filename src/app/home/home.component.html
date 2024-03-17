@@ -1,0 +1,85 @@
+<app-header></app-header>
+<app-breaking></app-breaking>
+
+<!-- ---------- Stories Section ---------- -->
+<section class="container stories p-0 mt-5">
+  <div class="row m-0 d-flex align-items-baseline">
+    <div class="col-lg-8 col-xs-12 p-0">
+      <div class="row m-0">
+        <div class="col-12 bg-light">
+          <ul class="p-1 m-0">
+            <li>
+              <a class="latest_stories nav-link text-black ms-0 font-poppins f-w-6" href="#">Latest Stories</a>
+            </li>
+            <li>
+              <a class="nav-link text-black ms-4 font-poppins f-w-6" href="#">Think</a>
+            </li>
+            <li>
+              <a class="nav-link text-black ms-4 font-poppins f-w-6" href="#">Health</a>
+            </li>
+          </ul>
+          <div class="ms-auto">
+            <i class="fa-solid fa-sliders fa-xl"></i>
+          </div>
+        </div>
+        <div class="row story-info m-0 mt-2 p-0 d-flex justify-content-between">
+          <div *ngFor=" let post of posts" class="col-6">
+            <div class="card story-cover">
+              <img src="http://localhost:8000/posts_images/{{post.cover}}" class="card-img-top" alt="...">
+              <div class="middle-layer pe-4">
+                <div class="text-center">
+                  <div class="col-12">
+                    <span class="image-label text-uppercase font-poppins f-w-4">
+                      {{post.category.category_name}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title font-IBM f-w-6 custom-black"><a class="text-decoration-none custom-black"
+                    href="/post-details/{{post.id}}" target="_blank"> {{post.title}}</a></h5>
+                <p class="card-text font-nunito f-w-4 custom-black">{{post.sub_title}}</p>
+              </div>
+              <div class="card-footer border-0 p-0 pb-3 m-0">
+                <div class="ps-4 pb-1 border-bottom">
+                  <p class="article-info font-poppins f-w-4 custom-black">{{ calculateTimeSincePosted(post.created_at) }}<span class="ms-4 opacity-75"> By
+                      {{post.user.name}}
+                      &nbsp;|&nbsp; {{post.time_to_read}}min read</span>
+                </div>
+                <div class="text-center mt-3 card-footer-info">
+                  <i class="favorite fa-regular fa-heart me-2" [ngClass]="{'fa-solid custom-red': checkLike(post.id)}" (click)="addLike(post.id)"></i>
+                  <span class="font-poppins f-w-5 custom-black">{{post.likes}}</span>
+                  <i class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                  <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(post.id)"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn text-uppercase view-more mt-3 custom-red font-poppins f-w-5" type="button"
+          (click)="viewMore()">view
+          more</button>
+      </div>
+    </div>
+    <div class="col-lg-4 col-xs-12 overflow-hidden sider ps-5 pe-0">
+      <div *ngIf="flag">
+        <h5 class="mb-4 custom-red font-poppins f-w-6">Live <i class="fa-solid fa-circle ms-2 fa-2xs"></i></h5>
+        <img src="http://localhost:8000/posts_images/{{livePosts.cover}}" alt="">
+        <h6 class="font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+          href="/post-details/{{livePosts.id}}" target="_blank">{{livePosts.title}}</a></h6>
+      </div>
+      <div class="location-news mt-5 mb-3">
+        <h6 class="mb-4 custom-black font-poppins f-w-6">Location News</h6>
+        <div class="location-details pt-4 pb-4 ps-3 pe-3 bg-light">
+          <p class="font-nunito f-w-4 custom-black">Get Location specific News</p>
+          <input type="text" name="location" id="location" placeholder="Enter Your Location">
+          <button class="btn text-light rounded-1 mt-4" type="button">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<app-editor-picks></app-editor-picks>

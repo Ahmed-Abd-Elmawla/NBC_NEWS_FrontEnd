@@ -1,0 +1,25 @@
+/* ---------- The Related Topics Section ---------- */
+.related-topics h2 {
+  font-size: 20px;
+  line-height: 29px;
+  color: #222222;
+}
+
+.related-topics .card {
+  width: 244px;
+  height: 357px;
+  border-radius: 2px !important;
+}
+
+.related-topics img {
+  height: 180px;
+  width: 250px;
+  object-fit: cover;
+  border-radius: 2px !important;
+}
+
+.related-topics p {
+  font-size: 16px;
+  line-height: 21px;
+  color: #222222;
+}

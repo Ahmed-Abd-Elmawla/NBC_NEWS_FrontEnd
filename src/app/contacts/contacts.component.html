@@ -1,0 +1,84 @@
+<div class="home">
+  <div class="container">
+    <div class="reactive__form">
+      <h2 class="title">Contact Us</h2>
+     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="examoleName" class="form-label">First name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="examoleName"
+                placeholder="Enter Your firstName"
+                formControlName="first_name"
+                [class.is-invalid]="first_name?.invalid && first_name?.touched"
+              />
+              <div *ngIf="f['first_name']?.invalid && (f['first_name']?.touched || f['first_name']?.dirty)">
+                <small class="text-danger" *ngIf="f['first_name']?.errors?.['required']"
+                  >Name is required</small
+                >
+                <small class="text-danger" *ngIf="f['first_name']?.errors?.['minlength']"
+                  >Name must be at least 3 characters long.</small
+                >
+              </div>
+            </div>
+          </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="examoleLastName" class="form-label">Last name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="examoleLastName"
+                  placeholder="Enter Your lastName"
+                  formControlName="last_name"
+                  [class.is-invalid]="last_name?.invalid && last_name?.touched"
+                />
+                <div *ngIf="last_name?.invalid && (last_name?.touched || last_name?.dirty)">
+                  <small class="text-danger" *ngIf="last_name?.errors?.['required']"
+                    >lastName is required</small>
+                  <small class="text-danger" *ngIf="last_name?.errors?.['minlength']"
+                    >Name must be at least 3 characters long.</small
+                  >
+                </div>
+              </div>
+            </div>
+            </div>
+
+          <div class="col-mb-3">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                placeholder="Enter Your Email"
+                formControlName="email"
+                [class.is-invalid]="email?.invalid && email?.touched"
+              />
+              <div *ngIf="email?.invalid && (email?.touched || email?.dirty)">
+                <small class="text-danger" *ngIf="email?.errors?.['required']"
+                  >Email is required</small>
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" formControlName="message"></textarea>
+              <div *ngIf="message?.invalid && (message?.dirty || message?.touched)">
+                <div *ngIf="message?.errors?.['minlength']">{{ message?.errors?.['minlength'].actualLength }} characters.</div>
+                <div *ngIf="message?.errors?.['minlength']">Message must be at least 10 characters long.</div>
+              </div>
+            </div>
+          <button type="submit" class="btn btn-primary submit mt-3" [disabled]="!contactForm.valid">Send</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+
+
+

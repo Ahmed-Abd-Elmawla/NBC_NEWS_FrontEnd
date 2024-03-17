@@ -1,1 +1,154 @@
 /* You can add global styles to this file, and also import other style files */
+/* ---------- custom classes most used values ---------- */
+.custom-red {
+  color: #C31815 !important;
+}
+
+.custom-black {
+  color: #2A2A2A !important;
+}
+
+.font-nunito {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-IBM {
+  font-family: "IBM Plex Serif", serif;
+}
+
+.f-w-4 {
+  font-weight: 400;
+}
+
+.f-w-5 {
+  font-weight: 500;
+}
+
+.f-w-6 {
+  font-weight: 600;
+}
+
+.f-w-7 {
+  font-weight: 700;
+}
+
+
+/* ---------- responsive edit ----------- */
+@media (max-width: 992px) {
+  .header-news {
+      padding: 20px 20px 10px 20px !important;
+  }
+
+  .breaking {
+      flex-direction: column;
+      padding-bottom: 10px;
+      height: auto;
+  }
+
+  .breaking button {
+      margin-bottom: 10px;
+      margin-top: 20px;
+  }
+
+  .story-info {
+      justify-content: center !important;
+  }
+
+  .sider {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px !important;
+  }
+
+  .footer-parts {
+      padding: 10px !important;
+      margin-left: 5px !important;
+      margin-right: 5px !important;
+      text-align: center !important;
+  }
+
+  .footer-icons a {
+      margin: 0px !important;
+  }
+
+  .sider-column {
+      padding: 0px !important;
+  }
+
+  .sider-column img {
+      width: 100% !important;
+      height: 100% !important;
+      margin: 0px !important;
+  }
+
+  .related-topics h2 {
+      text-align: center;
+  }
+
+  .related-topics .col {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 1400px) {
+  .editors-picks {
+      display: none;
+  }
+
+  .story-info {
+      justify-content: center !important;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1400px) {
+  .nav-link {
+      margin-left: 5px !important;
+      font-size: 12px;
+  }
+
+  .related-topics .col {
+      margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .story-title {
+      font-size: 32px;
+  }
+
+  .story-img {
+      width: 100%;
+      height: 100%;
+  }
+
+  .react-sider {
+      display: none;
+  }
+
+  .author .col-2 {
+      padding: 0px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .author .col-2 {
+      padding: 0px !important;
+  }
+
+  .related-topics h2 {
+      text-align: center;
+  }
+
+  .related-topics .col {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+  }
+}

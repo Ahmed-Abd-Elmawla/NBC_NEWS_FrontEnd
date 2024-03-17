@@ -1,0 +1,33 @@
+.body{
+  margin-top: 100px;
+  }
+  th{
+    background: #0E1E32;
+    color: #FFF;
+  }
+
+  .btn-outline-success {
+    border-color: #0E1E32;
+    color: #fff;
+    background: #0E1E32;
+    transition: 0.3s ease-in-out;
+  }
+
+  .btn-outline-success:hover {
+    border-color: #0E1E32;
+    color: #0E1E32;
+    background: #fff;
+  }
+
+  form label {
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .msg{
+    width: 100% !important;
+    height: 200px !important;
+    word-wrap: break-word;
+    font-weight: 500;
+    font-size: 20px;
+  }

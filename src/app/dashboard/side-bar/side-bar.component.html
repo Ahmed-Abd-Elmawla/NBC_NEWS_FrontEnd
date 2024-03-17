@@ -1,0 +1,106 @@
+<div class="side mb-5">
+  <div class="profile">
+    <i class="edit fa-solid fa-user-pen text-light" placement="bottom" ngbTooltip="Edit profile info"
+      (click)="open(content)"></i>
+    <img class="rounded-circle mb-4" src="http://localhost:8000/users_images/{{userInfo?.image}}" alt="" srcset="">
+    <label class="text-light username">{{userInfo?.name}}</label>
+    <p class="text-center">{{userInfo?.email}}</p>
+  </div>
+  <div class="side_bar">
+    <ul>
+      <li *ngIf="userInfo?.role_id==100 || userInfo?.role_id==101"><a [routerLink]="['/profile']"
+          routerLinkActive="router-link-active"><i class="fa-regular fa-newspaper"></i>Your Posts</a></li>
+          <li><a [routerLink]="['/saves']" routerLinkActive="router-link-active"><i class="fa-regular fa-bookmark"></i>Saved Posts</a>
+          </li>
+      <li *ngIf="userInfo?.role_id==100"><a [routerLink]="['/admin-users']" routerLinkActive="router-link-active"><i
+            class="fa-solid fa-user-gear"></i>All Users</a></li>
+      <li *ngIf="userInfo?.role_id==100"><a [routerLink]="['/admin-posts']" routerLinkActive="router-link-active"><i
+            class="fa-regular fa-newspaper"></i>All Posts</a></li>
+      <li *ngIf="userInfo?.role_id==100"><a [routerLink]="['/admin-categories']"
+          routerLinkActive="router-link-active"><i class="fa-solid fa-tag"></i>Categories</a></li>
+      <li *ngIf="userInfo?.role_id==100"><a [routerLink]="['/admin-contacts']" routerLinkActive="router-link-active"><i
+            class="fa-solid fa-envelope-circle-check"></i>Messages</a>
+      </li>
+      <li *ngIf="userInfo?.role_id==100"><a [routerLink]="['#']" routerLinkActive="router-link-active"><i class="fa-solid fa-comments"></i>Comments</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- update form -->
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update profile</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form" enctype="multipart/form-data">
+      <div class="alert alert-warning p-3 mt-1 font-weight-bold">
+        <span><i class="fa-solid fa-circle-exclamation"></i> If you don't want to change password or image leave them
+          empty.</span>
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Name</label>
+        <input type="text" class="form-control" id="Name" aria-describedby="titleHelp" formControlName="name"
+          [(ngModel)]="name" />
+        <div id="titleHelp" class="alert alert-danger p-1 mt-1" *ngIf="
+            form.controls['name'].touched &&
+           form.controls['name'].invalid
+          ">
+          <span *ngIf="form.controls['name'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            This field is required
+          </span>
+          <span *ngIf="form.controls['name'].errors?.['minlength']"><i class="fa-solid fa-triangle-exclamation"></i>
+            Min length is 15 char
+          </span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Email</label>
+        <input type="email" class="form-control" id="title" aria-describedby="titleHelp" formControlName="email"
+          [(ngModel)]="email" />
+        <div id="titleHelp" class="alert alert-danger p-1 mt-1" *ngIf="
+            form.controls['email'].touched &&
+            form.controls['email'].invalid
+          ">
+          <span *ngIf="form.controls['email'].errors?.['required']"><i class="fa-solid fa-triangle-exclamation"></i>
+            This field is required
+          </span>
+          <span *ngIf="form.controls['email'].errors?.['pattern']"><i class="fa-solid fa-triangle-exclamation"></i>
+            please enter valid email
+          </span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input #pass type="password" class="form-control" id="password" aria-describedby="titleHelp"
+          [(ngModel)]="password" formControlName="password" />
+
+        <div class="alert alert-danger p-1 mt-1" *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
+          <span *ngIf="form.get('password')?.errors?.['pattern']" class="text-danger"><i
+              class="fa-solid fa-triangle-exclamation"></i>
+            Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special
+            character (%, $, #) and be at least 8 characters long.
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <label for="title" class="form-label">Profile Image</label>
+        <div class="input-group">
+          <input type="file" class="form-control file p-1" id="inputGroupFile04"
+            aria-describedby="inputGroupFileAddon04" aria-label="Upload" #fileInput>
+        </div>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid"
+          (click)="updateInfo(pass.value)">
+          save updates
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>

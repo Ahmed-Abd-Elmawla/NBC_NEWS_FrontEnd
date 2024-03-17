@@ -1,0 +1,51 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <app-side-bar></app-side-bar>
+      </div>
+      <div class="col-9">
+        <div class="row mb-3">
+          <div class="col p-0 ps-1">
+            <h3>Posts</h3>
+          </div>
+        </div>
+        <div class="row p-0 ps-1">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Category</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let post of allPosts; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.user.name}}</td>
+                <td>{{post.category.category_name}}</td>
+                <td>
+                  <select #select class="form-select form-select-sm" aria-label=".form-select-sm example" (change)="update(post.id,post.status,select.value)">
+                    <option value="" selected disabled>{{post.status}}</option>
+                    <option value="published">published</option>
+                    <option value="trending">trending</option>
+                    <option value="breakingNews">breaking news</option>
+                    <option value="live">live</option>
+                  </select>
+                </td>
+                <td>
+                  <button class="btn btn-info" placement="bottom" ngbTooltip="view post"><a href="/post-details/{{post.id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-eye"></i></a></button>
+                  <button class="btn btn-danger" placement="bottom" ngbTooltip="delete post" (click)="delete(post.id)"><i class="fa-solid fa-trash-can"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

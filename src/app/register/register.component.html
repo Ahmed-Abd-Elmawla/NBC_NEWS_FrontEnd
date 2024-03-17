@@ -1,0 +1,74 @@
+<section>
+  <div class="container_">
+    <div class="registration form">
+      <header>Signup</header>
+      <form [formGroup]="form">
+        <input type="text" placeholder="Enter your name" formControlName="name" [(ngModel)]="name">
+        <div class="form-text alert alert-danger p-1 mt-1" role="alert" *ngIf="
+        form.controls['name'].touched &&
+       form.controls['name'].invalid
+      ">
+          <span class="text-danger" *ngIf="form.controls['name'].errors?.['required']">
+            This field is required </span>
+          <span class="text-danger" *ngIf="form.controls['name'].errors?.['minlength']">
+            min length is 10
+          </span>
+        </div>
+        <input type="email" placeholder="Enter your email" type="email" formControlName="email" [(ngModel)]="email">
+        <div class="form-text text-danger alert alert-danger p-1 mt-1" role="alert" *ngIf="
+        form.controls['email'].touched &&
+        form.controls['email'].invalid
+      ">
+          <span class="text-danger" *ngIf="form.controls['email'].errors?.['required']">
+            This field is required
+          </span>
+          <span class="text-danger" *ngIf="form.controls['email'].errors?.['pattern']">
+            please enter valid email
+          </span>
+        </div>
+        <input type="password" placeholder="Create a password" formControlName="password" >
+        <div class="form-text text-danger alert alert-danger p-1 mt-1" role="alert" *ngIf="
+        form.controls['password'].touched &&
+        form.controls['password'].invalid
+      ">
+          <span class="text-danger" *ngIf="form.controls['password'].errors?.['required']">
+            This field is required
+          </span>
+          <span class="text-danger" *ngIf="form.controls['password'].errors?.['pattern']">
+            please enter valid password contain Aa#1
+          </span>
+          <span class="text-danger" *ngIf="form.controls['password'].errors?.['minlength']">
+            min length is 8
+          </span>
+        </div>
+        <input type="password" placeholder="Confirm your password" formControlName="confirm_password" [(ngModel)]="password">
+        <div class="form-text text-danger alert alert-danger p-1 mt-1" role="alert" *ngIf="
+        form.controls['confirm_password'].touched &&
+        form.controls['confirm_password'].invalid
+      ">
+          <span class="text-danger" *ngIf="form.controls['confirm_password'].errors?.['required']">
+            This field is required
+          </span>
+          <span class="text-danger" *ngIf="form.controls['confirm_password'].errors?.['equalTo']">
+            password not match
+          </span>
+        </div>
+        <input type="file" id="image" class="form-control" name="image" formControlName="image" />
+        <div class="alert alert-danger p-1 mt-1"
+        *ngIf="form.controls['image'].touched && form.controls['image'].invalid">
+        <!-- <span class="d-block" *ngIf="form.controls['image'].errors?.['required']"><i
+            class="fa-solid fa-triangle-exclamation"></i>image is required</span> -->
+            <span class="d-block" *ngIf="form.controls['image'].errors?.['fileCount']"><i
+              class="fa-solid fa-triangle-exclamation"></i>image is required</span>
+      </div>
+
+        <input type="button" class="button" value="Register" [disabled]="form.invalid" (click)="register()">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+          <label><a href="/login">Login</a></label>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

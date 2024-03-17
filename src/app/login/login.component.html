@@ -1,0 +1,153 @@
+<section>
+  <div class="container_">
+    <div class="login form">
+      <header>Login</header>
+      <form [formGroup]="login">
+        <input type="text" placeholder="Enter your email" formControlName="email" [(ngModel)]="email">
+        <div class="form-text text-danger alert alert-danger p-1 mt-1" role="alert" *ngIf="
+        login.controls['email'].touched &&
+        login.controls['email'].invalid
+      ">
+          <span class="text-danger" *ngIf="login.controls['email'].errors?.['required']">
+            This field is required
+          </span>
+          <span class="text-danger" *ngIf="login.controls['email'].errors?.['pattern']">
+            please enter valid email
+          </span>
+        </div>
+        <input type="password" placeholder="Enter your password" formControlName="password" [(ngModel)]="password">
+        <div class="form-text text-danger alert alert-danger p-1 mt-1" role="alert" *ngIf="
+        login.controls['password'].touched &&
+        login.controls['password'].invalid
+      ">
+          <span class="text-danger" *ngIf="login.controls['password'].errors?.['required']">
+            This field is required
+          </span>
+          <span class="text-danger" *ngIf="login.controls['password'].errors?.['pattern']">
+            please enter valid password contain Aa#1
+          </span>
+          <span class="text-danger" *ngIf="login.controls['password'].errors?.['minlength']">
+            min length is 8
+          </span>
+        </div>
+        <a id="forget" (click)="reset(content)">Forgot password?</a>
+        <input type="button" class="button" value="Login" [disabled]="login.invalid" (click)="loginFn()">
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <label><a href="/register">Signup</a></label>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Reset Password</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+				<label class="form-label" for="Email">Email</label>
+				<div  class="input-group">
+					<input #email
+						id="mail"
+						class="form-control"
+						placeholder="enter your email"
+						name="email"
+					/>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary mt-3" (click)="sendCode(email.value,content2)">send code</button>
+	</div>
+</ng-template>
+
+
+<ng-template #content2 let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Reset Password</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+				<label class="form-label" for="Email">Enter verification code</label>
+				<div class="input-group">
+					<input #code
+						id="code"
+						class="form-control"
+						placeholder="code "
+						name="code"
+					/>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary mt-3" (click)="checkCode(code.value,content3)">verify</button>
+	</div>
+</ng-template>
+
+
+<ng-template #content3 let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Reset Password</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form enctype="multipart/form-data" [formGroup]="resetForm">
+			<div class="mb-3">
+				<label class="form-label" for="password">New password</label>
+				<div class="input-group">
+					<input
+          type="password"
+						id="password"
+						class="form-control"
+						placeholder=""
+						name="password"
+            formControlName="pass"
+					/>
+				</div>
+        <div class="alert alert-danger p-1 mt-1"
+        *ngIf="resetForm.controls['pass'].touched && resetForm.controls['pass'].invalid">
+        <span class="d-block" *ngIf="resetForm.controls['pass'].errors?.['required']"><i
+            class="fa-solid fa-triangle-exclamation"></i> password is required</span>
+        <span class="d-block" *ngIf="resetForm.controls['pass'].errors?.['pattern']"><i
+            class="fa-solid fa-triangle-exclamation"></i> password must be like 'Abcde123'</span>
+        <span class="d-block" *ngIf="resetForm.controls['pass'].errors?.['minlength']"><i
+            class="fa-solid fa-triangle-exclamation"></i> password min length is 8</span>
+      </div>
+			</div>
+      <div class="mb-3">
+				<label class="form-label" for="confirm">Confirm password</label>
+				<div class="input-group">
+					<input #pass
+          type="password"
+						id="confirm"
+						class="form-control"
+						placeholder=""
+						name="confirm"
+            formControlName="confirmPass"
+					/>
+				</div>
+        <div class="alert alert-danger p-1 mt-1"
+        *ngIf="resetForm.controls['confirmPass'].touched && resetForm.controls['confirmPass'].invalid">
+        <span class="d-block" *ngIf="resetForm.controls['confirmPass'].errors?.['required']"><i
+            class="fa-solid fa-triangle-exclamation"></i> confirm is required</span>
+      </div>
+      <div *ngIf="resetForm.controls['confirmPass'].touched">
+      <span class="alert alert-danger p-1 mt-1 d-block" *ngIf="resetForm.controls['confirmPass'].value != resetForm.controls['pass'].value"><i
+          class="fa-solid fa-triangle-exclamation"></i> password don't match</span>
+    </div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary mt-3" (click)="resetPassword(pass.value)" [disabled]="resetForm.invalid">reset password</button>
+	</div>
+</ng-template>

@@ -1,0 +1,44 @@
+
+/* ---------- The Nav Bar ---------- */
+nav {
+  height: 80px;
+  background: #FDFDFDD9;
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.nav-link {
+  font-size: 16px;
+  line-height: 21.82px;
+}
+
+nav .fa-circle {
+  width: 8px;
+}
+
+nav .fa-angles-right {
+  width: 12.01px;
+  height: 12.01px;
+  color: #000000;
+}
+
+nav .fa-user {
+  width: 19.2px;
+  height: 24px;
+}
+
+nav .fa-magnifying-glass {
+  width: 24px;
+  height: 24px;
+}
+
+nav .fa-bars {
+  width: 23.05px;
+  height: 22px;
+}
+
+.dropdown-item{
+  cursor: pointer;
+}

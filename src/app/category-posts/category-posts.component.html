@@ -1,0 +1,33 @@
+<section class="container">
+<div class="row story-info mt-1">
+  <div class="m-5 text-center vh-100" *ngIf="posts.length==0">
+    <h1 class="font-IBM f-w-6 custom-black">There aro no posts found</h1>
+  </div>
+  <div class="mt-2 mb-2" *ngIf="posts.length>0">
+    <h3 class="font-IBM f-w-6 custom-black">{{posts[0].category.category_name}} posts</h3>
+  </div>
+  <div *ngFor=" let post of posts" class="col-4 m-2">
+    <div class="card story-cover">
+      <img src="http://localhost:8000/posts_images/{{post.cover}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title font-IBM f-w-6 custom-black"><a class="text-decoration-none custom-black"
+            href="/post-details/{{post.id}}" target="_blank"> {{post.title}}</a></h5>
+        <p class="card-text font-nunito f-w-4 custom-black">{{post.sub_title}}</p>
+      </div>
+      <div class="card-footer border-0 p-0 pb-3 m-0">
+        <div class="ps-4 pb-1 border-bottom">
+          <p class="article-info font-poppins f-w-4 custom-black">{{ calculateTimeSincePosted(post.updated_at) }}<span class="ms-4 opacity-75"> By
+              {{post.user.name}}
+              &nbsp;|&nbsp; {{post.time_to_read}}min read</span>
+        </div>
+        <div class="text-center mt-3 card-footer-info">
+          <i class="favorite fa-solid fa-heart me-2 custom-red"></i>
+          <span class="font-poppins f-w-5 custom-black">{{post.likes}}</span>
+          <i class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+          <i class="fa-regular fa-bookmark ms-4"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

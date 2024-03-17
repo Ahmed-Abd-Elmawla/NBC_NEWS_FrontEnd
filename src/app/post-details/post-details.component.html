@@ -1,0 +1,147 @@
+<div class="progress">
+  <div class="progress-bar"></div>
+</div>
+<!-- ---------- The Body Section ---------- -->
+<section class="body-section">
+  <div class="cover-bg position-absolute">
+  </div>
+  <div class="container">
+      <div class="row  d-flex justify-content-center">
+          <div class="col-8 text-center mt-5 pt-3">
+              <h1 class="story-title font-IBM f-w-6">{{post.title}}
+              </h1>
+          </div>
+          <div class="row d-flex justify-content-center">
+              <div class="col-10 text-center p-0 mt-4">
+                  <img class="story-img" src="http://localhost:8000/posts_images/{{post.cover}}" alt="" srcset="">
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="react-sider col-lg-1 col-md-1 mt-5 pt-5">
+              <ul class="p-0 m-0 mb-4">
+                  <p class="see-more mb-2 font-poppins f-w-5">See more like this?</p>
+                  <p class="see-more-select ps-2"><i class="fa-solid fa-circle"></i>&nbsp; | &nbsp;<i
+                          class="fa-solid fa-circle"></i></p>
+              </ul>
+              <div class="story-react d-flex flex-column font-poppins f-w-4">
+                  <div class="mt-4 mb-1"><i class="fa-solid fa-heart fa-xl custom-red"></i><span>{{post.likes}}</span></div>
+                  <div class="mt-4 mb-2"><i
+                          class="fa-regular fa-comment fa-flip-horizontal fa-xl custom-black opacity-75"></i><span>21</span>
+                  </div>
+                  <div class="mt-4 ms-1 mb-2"><i
+                          class="fa-solid fa-arrow-up-from-bracket fa-xl custom-black opacity-75"></i></div>
+                  <div class="mt-4 ms-1"><i class="fa-regular fa-bookmark fa-xl custom-black opacity-75"></i>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-7 col-md-11 pe-5">
+              <div class="mt-5">
+                  <p id="article-info">{{ calculateTimeSincePosted(post.updated_at) }}<span class="ms-4 opacity-75"> By {{post.user.name}} &nbsp;|&nbsp;
+                          {{post.time_to_read}}min
+                          read</span>
+              </div>
+              <p class="story-body font-nunito f-w-4">{{post.description}}<br><br></p>
+              <div class="second-title border-top border-bottom pt-4 pb-3 font-IBM f-w-4">
+                  <h2 class="custom-black">{{post.sub_title}}</h2>
+              </div>
+              <div class="text-center mt-5" *ngFor="let article of post.articles">
+                  <img src="http://localhost:8000/posts_images/{{article.image}}" alt="">
+                  <div class="img-details p-0  m-auto">
+                      <span class="_border"></span>
+                      <p class="d-inline-block custom-black ps-3 mt-3 font-nunito f-w-4">{{article.details}} <span class="custom-red">{{article.image_source}}</span>
+                      </p>
+                  </div>
+                              <p class="story-body font-nunito f-w-4 text-start">{{article.description}}<br><br></p>
+              </div>
+              <div class="news-letter p-5">
+                  <h3 class="custom-black font-IBM f-w-6">Sign up for The NBC News Newsletter</h3>
+                  <h6 class="custom-black opacity-75 font-poppins f-w-4">By Caroline Casey</h6>
+                  <p class="custom-black font-nunito f-w-4">A weekly, ad-free newsletter that helps 786,000+
+                      readers stay in the know,
+                      be
+                      productive, and think more critically about the world. <a class="custom-black" href="#">Take
+                          a
+                          look</a></p>
+                  <button type="button" class="btn text-uppercase mt-1 font-poppins f-w-5"><i
+                          class="fa-regular fa-envelope fa-lg"></i>&nbsp; Get
+                      this Newsletter</button>
+              </div>
+              <ul class="tags list-unstyled mt-5 mb-5" *ngIf="post.tags!=[]">
+                  <li><a class="text-decoration-none me-4 custom-red text-center pt-2 f-w-4" *ngFor="let tag of post.tags">{{tag}}</a>
+                  </li>
+                  <!-- <li><a class="text-decoration-none me-4 custom-red text-center pt-2 f-w-4" href="#">Trending</a>
+                  </li>
+                  <li><a class="text-decoration-none me-4 custom-red text-center pt-2 f-w-4" href="#">Lewis</a>
+                  </li>
+                  <li><a class="text-decoration-none me-4 custom-red text-center pt-2 f-w-4" href="#">Freebie</a>
+                  </li> -->
+              </ul>
+              <div class="clearfix"></div>
+              <div class="row mt-5 story-icons mb-4">
+                  <div class="col-6">
+                      <i class="fa-regular fa-heart fa-2xl custom-black opacity-75 me-2"></i><span
+                          class="custom-black me-5 font-poppins f-w-5">{{post.likes}}</span>
+                      <i
+                          class="fa-regular fa-comment fa-flip-horizontal fa-2xl custom-black opacity-75 me-2"></i><span
+                          class="custom-black">21 responses</span>
+                  </div>
+                  <div class="col-6 text-end">
+                      <i class="fa-solid fa-arrow-up-from-bracket custom-black opacity-75"></i><span
+                          class="custom-black ms-2">72</span>
+                      <i class="fa-regular fa-bookmark custom-black opacity-75 ms-4"></i>
+                      <i class="fa-solid fa-ellipsis fa-lg ms-4"></i>
+                  </div>
+              </div>
+              <hr>
+              <div class="row author mt-4 pt-3">
+                  <div class="col-2">
+                      <div class="author-img overflow-hidden"> <img class="" src="http://localhost:8000/users_images/{{post.user.image}}" alt=""
+                              srcset="">
+                      </div>
+                  </div>
+                  <div class="col-6 p-0 pe-2">
+                      <h5 class="custom-black opacity-75 font-nunito f-w-7">Author</h5>
+                      <h3 class="custom-black font-nunito f-w-7">{{post.user.name}}</h3>
+                      <p class="font-nunito f-w-4">Caroline Casey is an award-winning social activist and founder
+                          of <span class="custom-red">The Valuable 500,</span> a global movement aimed at getting
+                          500
+                          companies to commit to disability inclusion.</p>
+                  </div>
+                  <div class="col-4 text-end">
+                      <button type="button" class="text-uppercase btn custom-red"><i
+                              class="fa-brands fa-twitter me-3"></i>follow</button>
+                  </div>
+              </div>
+          </div>
+          <div class="sider-column col-lg-3 col-md-12 mt-5 ps-5">
+              <div>
+                  <h6 class="font-poppins f-w-6">Recommended for you</h6>
+                  <div class="card border-0 mt-3 overflow-hidden pb-4">
+                      <img src="../../assets/images/sider_img_1.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <p class="card-text font-IBM f-w-7">Millions rely on emergency pandemic benefits for
+                              rent, food, and
+                              medicine. Now, that lifeline could disappear.</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="mt-5">
+                  <h6>Based on Like</h6>
+                  <div class="card border-0 mt-3 overflow-hidden pb-4">
+                      <img src="../../assets/images/sider_img_2.png" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <p class="card-text">The ADA is turning 30. It's time that it included digital
+                              accessibility.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+
+
+<app-related-topics></app-related-topics>

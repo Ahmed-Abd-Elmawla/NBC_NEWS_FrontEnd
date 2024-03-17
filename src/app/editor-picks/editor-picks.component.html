@@ -1,0 +1,275 @@
+<!-- ---------- Editor’s Picks Section ---------- -->
+<section class="container editors-picks p-0 mt-5">
+  <h4 class="mb-4 font-poppins custom-black f-w-6">Editor’s Picks &nbsp; <i class="fa-solid fa-star fa-sm"></i>
+  </h4>
+  <div id="carouselExampleCaptions" class="carousel slide">
+      <div class="carousel-inner pb-5">
+          <div class="carousel-item active" >
+              <div class="row">
+                  <div class="col-6 pe-0">
+                      <div class="card border-0">
+                          <div class="row g-0">
+                              <div class="col-md-5 editors-picks-img">
+                                  <img class="image" src="http://localhost:8000/posts_images/{{posts[0]?.cover}}" alt="...">
+                                  <div class="middle ">
+                                      <div class="middle-content text-center">
+                                          <div class="col-12 ">
+                                              <span
+                                                  class="img-label float-end m-3 font-poppins f-w-4">{{posts[0]?.category.category_name}}</span>
+                                          </div>
+                                          <div class="col-12 mb-3">
+                                              <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[0].id)}" (click)="addLike(posts[0].id)"></i><span>{{posts[0]?.likes}}</span>
+                                              <i
+                                                  class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                              <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[0].id)"></i>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-7">
+                                  <div class="card-body pt-1 pe-0">
+                                      <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                                        href="/post-details/{{posts[0]?.id}}" target="_blank">{{posts[0]?.title}}</a></h5>
+                                      <p class="card-text font-nunito f-w-4 custom-black">{{posts[0]?.sub_title}}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-6 pe-0">
+                    <div class="card border-0">
+                      <div class="row g-0">
+                          <div class="col-md-5 editors-picks-img">
+                              <img class="image" src="http://localhost:8000/posts_images/{{posts[1]?.cover}}" alt="...">
+                              <div class="middle ">
+                                  <div class="middle-content text-center">
+                                      <div class="col-12 ">
+                                          <span
+                                              class="img-label float-end m-3 font-poppins f-w-4">{{posts[1]?.category.category_name}}</span>
+                                      </div>
+                                      <div class="col-12 mb-3">
+                                          <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[1].id)}" (click)="addLike(posts[1].id)"></i><span>{{posts[1]?.likes}}</span>
+                                          <i
+                                              class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                          <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[1].id)"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-7">
+                              <div class="card-body pt-1 pe-0">
+                                  <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                                    href="/post-details/{{posts[1]?.id}}" target="_blank">{{posts[1]?.title}}</a></h5>
+                                  <p class="card-text font-nunito f-w-4 custom-black">{{posts[1]?.sub_title}}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+                <div class="col-6 pe-0">
+                    <div class="card border-0">
+                        <div class="row g-0">
+                            <div class="col-md-5 editors-picks-img">
+                                <img class="image" src="http://localhost:8000/posts_images/{{posts[2]?.cover}}" alt="...">
+                                <div class="middle ">
+                                    <div class="middle-content text-center">
+                                        <div class="col-12 ">
+                                            <span
+                                                class="img-label float-end m-3 font-poppins f-w-4">{{posts[2]?.category.category_name}}</span>
+                                        </div>
+                                        <div class="col-12 mb-3">
+                                            <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[2].id)}" (click)="addLike(posts[2].id)"></i><span>{{posts[2]?.likes}}</span>
+                                            <i
+                                                class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                            <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[2].id)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body pt-1 pe-0">
+                                    <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                                      href="/post-details/{{posts[2]?.id}}" target="_blank">{{posts[2]?.title}}</a></h5>
+                                    <p class="card-text font-nunito f-w-4 custom-black">{{posts[2]?.sub_title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 pe-0">
+                  <div class="card border-0">
+                    <div class="row g-0">
+                        <div class="col-md-5 editors-picks-img">
+                            <img class="image" src="http://localhost:8000/posts_images/{{posts[3]?.cover}}" alt="...">
+                            <div class="middle ">
+                                <div class="middle-content text-center">
+                                    <div class="col-12 ">
+                                        <span
+                                            class="img-label float-end m-3 font-poppins f-w-4">{{posts[3]?.category.category_name}}</span>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[3].id)}" (click)="addLike(posts[3].id)"></i><span>{{posts[3]?.likes}}</span>
+                                        <i
+                                            class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                        <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[3].id)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body pt-1 pe-0">
+                                <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                                  href="/post-details/{{posts[3]?.id}}" target="_blank">{{posts[3]?.title}}</a></h5>
+                                <p class="card-text font-nunito f-w-4 custom-black">{{posts[3]?.sub_title}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+              <div class="col-6 pe-0">
+                  <div class="card border-0">
+                      <div class="row g-0">
+                          <div class="col-md-5 editors-picks-img">
+                              <img class="image" src="http://localhost:8000/posts_images/{{posts[4]?.cover}}" alt="...">
+                              <div class="middle ">
+                                  <div class="middle-content text-center">
+                                      <div class="col-12 ">
+                                          <span
+                                              class="img-label float-end m-3 font-poppins f-w-4">{{posts[4]?.category.category_name}}</span>
+                                      </div>
+                                      <div class="col-12 mb-3">
+                                          <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[4].id)}" (click)="addLike(posts[4].id)"></i><span>{{posts[4]?.likes}}</span>
+                                          <i
+                                              class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                          <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[4].id)"></i>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-7">
+                              <div class="card-body pt-1 pe-0">
+                                  <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                                    href="/post-details/{{posts[4]?.id}}" target="_blank">{{posts[4]?.title}}</a></h5>
+                                  <p class="card-text font-nunito f-w-4 custom-black">{{posts[4]?.sub_title}}</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-6 pe-0">
+                <div class="card border-0">
+                  <div class="row g-0">
+                      <div class="col-md-5 editors-picks-img">
+                          <img class="image" src="http://localhost:8000/posts_images/{{posts[5]?.cover}}" alt="...">
+                          <div class="middle ">
+                              <div class="middle-content text-center">
+                                  <div class="col-12 ">
+                                      <span
+                                          class="img-label float-end m-3 font-poppins f-w-4">{{posts[5]?.category.category_name}}</span>
+                                  </div>
+                                  <div class="col-12 mb-3">
+                                      <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[5].id)}" (click)="addLike(posts[5].id)"></i><span>{{posts[5]?.likes}}</span>
+                                      <i
+                                          class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                      <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[5].id)"></i>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-md-7">
+                          <div class="card-body pt-1 pe-0">
+                              <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                                href="/post-details/{{posts[5]?.id}}" target="_blank">{{posts[5]?.title}}</a></h5>
+                              <p class="card-text font-nunito f-w-4 custom-black">{{posts[5]?.sub_title}}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+            <div class="col-6 pe-0">
+                <div class="card border-0">
+                    <div class="row g-0">
+                        <div class="col-md-5 editors-picks-img">
+                            <img class="image" src="http://localhost:8000/posts_images/{{posts[6]?.cover}}" alt="...">
+                            <div class="middle ">
+                                <div class="middle-content text-center">
+                                    <div class="col-12 ">
+                                        <span
+                                            class="img-label float-end m-3 font-poppins f-w-4">{{posts[6]?.category.category_name}}</span>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[6].id)}" (click)="addLike(posts[6].id)"></i><span>{{posts[6]?.likes}}</span>
+                                        <i
+                                            class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                        <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[6].id)"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body pt-1 pe-0">
+                                <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                                  href="/post-details/{{posts[6]?.id}}" target="_blank">{{posts[6]?.title}}</a></h5>
+                                <p class="card-text font-nunito f-w-4 custom-black">{{posts[6]?.sub_title}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 pe-0">
+              <div class="card border-0">
+                <div class="row g-0">
+                    <div class="col-md-5 editors-picks-img">
+                        <img class="image" src="http://localhost:8000/posts_images/{{posts[7]?.cover}}" alt="...">
+                        <div class="middle ">
+                            <div class="middle-content text-center">
+                                <div class="col-12 ">
+                                    <span
+                                        class="img-label float-end m-3 font-poppins f-w-4">{{posts[7]?.category.category_name}}</span>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <i class="fa-regular fa-heart me-2"[ngClass]="{'fa-solid custom-red': checkLike(posts[7].id)}" (click)="addLike(posts[7].id)"></i><span>{{posts[7]?.likes}}</span>
+                                    <i
+                                        class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                                    <i class="fa-regular fa-bookmark ms-4" (click)="addSaved(posts[7].id)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body pt-1 pe-0">
+                            <h5 class="card-title font-IBM f-w-7 custom-black"><a class="text-decoration-none custom-black"
+                              href="/post-details/{{posts[7]?.id}}" target="_blank">{{posts[7]?.title}}</a></h5>
+                            <p class="card-text font-nunito f-w-4 custom-black">{{posts[7]?.sub_title}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+      </div>
+      <div class="carousel-indicators mb-0">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+              aria-label="Slide 3"></button>
+      </div>
+  </div>
+</section>

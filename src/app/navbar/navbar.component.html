@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+  <div class="container p-0">
+    <a class="navbar-brand me-5 ms-2" href="#">
+      <img src="../../assets/images/logo.png" alt="Bootstrap" width="55">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngFor="let item of navItems; let i = index" class="nav-item">
+          <a class="nav-link text-black font-nunito f-w-6 ms-5" aria-current="page" href="/category/{{item.id}}">
+            <i *ngIf="i==0" class="fa-solid fa-circle me-2 custom-red fa-2xs"></i>{{item.category_name }}
+          </a>
+        </li>
+        <li *ngIf="showDropdownFlag" class="nav-item ms-5">
+          <div class="dropdown">
+            <button class="btn p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-angles-right"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let item of remainingItems; let i = index"><a
+                  class="nav-link text-black dropdown-item font-nunito f-w-6" href="/category/{{item.id}}">{{item.category_name}}</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <a *ngIf="flag" href="/dashboard"><i class="fa-regular fa-user me-5 ms-5 custom-black"></i></a>
+      <i class="fa-solid fa-magnifying-glass me-5 custom-black"></i>
+      <!-- <a href="/register"><i class="fa-solid fa-bars custom-black"></i></a> -->
+      <div class="dropdown">
+        <button class="btn p-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-bars custom-black"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngIf="!flag"><a class="nav-link text-black dropdown-item font-nunito f-w-6 p-1"
+              href="/register">Register</a></li>
+          <li *ngIf="flag"><a class="nav-link text-black dropdown-item font-nunito f-w-6 p-1"
+              (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

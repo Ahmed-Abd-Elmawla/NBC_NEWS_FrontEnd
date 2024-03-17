@@ -1,0 +1,80 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <app-side-bar></app-side-bar>
+      </div>
+      <div class="col-9">
+        <div class="row mb-3">
+          <div class="col p-0 ps-1">
+            <h3 class="d-inline">Categories</h3>
+            <a class="btn btn-outline-success float-end" (click)="open(content)">Create new category</a>
+          </div>
+        </div>
+        <div class="row p-0 ps-1">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle" *ngFor="let category of categories;let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{category.category_name}}</td>
+                <td>
+                  <a class="btn btn-primary" (click)="openUpdate(content,category.category_name,category.id)" placement="bottom" ngbTooltip="Update Category"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a class="btn btn-danger ms-2" (click)="delete(category.id)" placement="bottom" ngbTooltip="Delete Category"><i class="fa-solid fa-trash-can"></i></a>
+                </td>
+              <!-- </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title" *ngIf="flag==true">Create new category</h4>
+    <h4 class="modal-title" id="modal-basic-title" *ngIf="flag==false">update category</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click');flag=true;"></button>
+	</div>
+	<div class="modal-body">
+		<form enctype="multipart/form-data" [formGroup]="form">
+			<div class="mb-3">
+				<label for="category_name">Category name</label>
+				<div class="input-group">
+					<input
+						id="category"
+						class="form-control"
+						placeholder="enter category name"
+						name="category"
+            [(ngModel)]="category_name"
+            formControlName="category"
+					/>
+				</div>
+        <div class="alert alert-danger p-1 mt-1"
+        *ngIf="form.controls['category'].touched && form.controls['category'].invalid">
+        <span class="d-block" *ngIf="form.controls['category'].errors?.['required']"><i
+            class="fa-solid fa-triangle-exclamation"></i> Name is required</span>
+            <span class="d-block" *ngIf="form.controls['category'].errors?.['minlength']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Min length is 4</span>
+        <span class="d-block" *ngIf="form.controls['category'].errors?.['maxlength']"><i
+            class="fa-solid fa-triangle-exclamation"></i> Max length is 25</span>
+            <span class="d-block" *ngIf="form.controls['category'].errors?.['pattern']"><i
+              class="fa-solid fa-triangle-exclamation"></i> Name must be letters only</span>
+      </div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+    <button type="button" class="btn btn-outline-success float-end p-2 ps-5 px-5 mb-3" [disabled]="form.invalid"
+    (click)="create()" *ngIf="flag==true">Create</button>
+  <button type="button" class="btn btn-outline-success float-end p-2 ps-5 px-5 mb-3" [disabled]="form.invalid"
+    (click)="update()" *ngIf="flag==false">update</button>	</div>
+</ng-template>

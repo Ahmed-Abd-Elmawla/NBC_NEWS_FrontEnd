@@ -1,0 +1,8 @@
+<!-- ---------- Breaking News Section ---------- -->
+<section class="container p-0" *ngIf="posts && posts.length > 0">
+  <div class="breaking d-flex justify-content-center align-items-center mt-5 mb-5">
+    <button class="btn rounded-0 me-5 font-poppins f-w-4 custom-red">Breaking News</button>
+    <h3><a class="text-decoration-none font-poppins f-w-5"
+      href="/post-details/{{posts[0].id}}" target="_blank">{{posts[0].title}}</a></h3>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+<!-- ---------- The Related Topics Section ---------- -->
+<section class="container related-topics p-0 mt-3">
+  <h2 class="font-poppins f-w-5">Related Topics</h2>
+  <div class="row">
+      <div class="col" *ngFor="let post of posts">
+          <div class="card border-0 overflow-hidden">
+              <img src="http://localhost:8000/posts_images/{{post.cover}}" class="card-img-top" alt="...">
+              <div class="card-body pt-4">
+                  <p class="card-text font-IBM f-w-5">{{post.title}}</p>
+              </div>
+              <hr class="m-3">
+              <div class="text-center mb-3 card-footer-info">
+                  <i class="fa-solid fa-heart me-2 custom-red"></i><span>{{post.likes}}</span>
+                  <i class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                  <i class="fa-regular fa-bookmark ms-4"></i>
+              </div>
+          </div>
+      </div>
+      <!-- <div class="col">
+          <div class="card border-0 overflow-hidden">
+              <img src="/images/related_img_2.png" class="card-img-top" alt="...">
+              <div class="card-body pt-4">
+                  <p class="card-text">Hill Republicans begin jockeying for power in a possible post-Trump world
+                  </p>
+              </div>
+              <hr class="m-3">
+              <div class="text-center mb-3 card-footer-info">
+                  <i class="fa-solid fa-heart me-2 custom-red"></i><span>28</span>
+                  <i class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                  <i class="fa-regular fa-bookmark ms-4"></i>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="card border-0 overflow-hidden">
+              <img src="/images/related_img_3.png" class="card-img-top" alt="...">
+              <div class="card-body pt-4">
+                  <p class="card-text">Twitter 'walkout' planned after rapper's anti-Semitic tirade</p>
+              </div>
+              <hr class="m-3">
+              <div class="text-center mb-3 card-footer-info">
+                  <i class="fa-solid fa-heart me-2 custom-red"></i><span>28</span>
+                  <i class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                  <i class="fa-regular fa-bookmark ms-4"></i>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="card border-0 overflow-hidden">
+              <img src="/images/related_img_4.png" class="card-img-top" alt="...">
+              <div class="card-body pt-4">
+                  <p class="card-text">Fleetwood Mac co-founder Peter Green dies at 73</p>
+              </div>
+              <hr class="m-3">
+              <div class="text-center mb-3 card-footer-info">
+                  <i class="fa-solid fa-heart me-2 custom-red"></i><span>28</span>
+                  <i class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                  <i class="fa-regular fa-bookmark ms-4"></i>
+              </div>
+          </div>
+      </div>
+      <div class="col">
+          <div class="card border-0 overflow-hidden">
+              <img src="/images/sider_img_2.png" class="card-img-top" alt="...">
+              <div class="card-body pt-4">
+                  <p class="card-text">The ADA is turning 30. It's time that it included digital accessibility.
+                  </p>
+              </div>
+              <hr class="m-3">
+              <div class="text-center mb-3 card-footer-info">
+                  <i class="fa-solid fa-heart me-2 custom-red"></i><span>28</span>
+                  <i class="fa-solid fa-arrow-up-from-bracket  me-2 ms-4"></i><span>72</span>
+                  <i class="fa-regular fa-bookmark ms-4"></i>
+              </div>
+          </div>
+      </div> -->
+  </div>
+</section>

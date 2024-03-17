@@ -1,0 +1,27 @@
+<header class="container p-0" *ngIf="flag">
+  <div class="row align-items-center">
+    <div class="col-lg-7 col-xs-12 overflow-hidden">
+      <img class="p-0 m-0" src="http://localhost:8000/posts_images/{{posts.cover}}" alt="" srcset="">
+    </div>
+    <div class="col-lg-5 col-xs-12 ps-5 header-news">
+      <div class="row">
+        <div class="col-6">
+          <h6 class="font-poppins f-w-6 custom-red">Trending</h6>
+        </div>
+        <div class="col-6 d-flex justify-content-end">
+          <i class="fa-regular fa-heart me-3 custom-red" [ngClass]="{'fa-solid custom-red': checkLike(posts.id)}" (click)="addLike(posts.id)"></i>
+          <i class="fa-solid fa-arrow-up-from-bracket me-3"></i>
+          <i class="fa-regular fa-bookmark" (click)="addSaved(posts.id)"></i>
+        </div>
+      </div>
+      <h2 class="font-IBM f-w-6"><a class="text-decoration-none custom-black"
+        href="/post-details/{{posts.id}}" target="_blank">{{posts.title}}</a></h2>
+      <p class="font-poppins f-w-4 custom-black">{{posts.sub_title}}</p>
+      <div class="mt-4">
+        <p class="article-info font-poppins f-w-4 custom-black">{{calculateTimeSincePosted(posts.created_at)}}<span class="ms-4 opacity-75"> By
+            {{posts.user.name}} &nbsp;|&nbsp; {{posts.time_to_read}}min read</span>
+      </div>
+    </div>
+  </div>
+</header>
+<div *ngIf="!flag" class="hidden-top"></div>

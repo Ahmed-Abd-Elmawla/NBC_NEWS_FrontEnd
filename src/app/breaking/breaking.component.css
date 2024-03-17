@@ -1,0 +1,26 @@
+/* ---------- Breaking News Section ----------- */
+.breaking {
+  height: 80px;
+  background-color: #C31815;
+  color: #ffffff;
+}
+
+.breaking .btn {
+  width: 157px;
+  height: 54px;
+  font-size: 16px;
+  line-height: 15px;
+  background-color: #ffffff;
+}
+
+/* .breaking h3 {
+  font-size: 20px;
+  line-height: 15px;
+  color:#ffffff !important;
+} */
+
+.breaking a {
+  font-size: 20px;
+  line-height: 15px;
+  color:#ffffff;
+}
